@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './List.css';
 
-function List() {
+function List(index) {
 
 	// eslint-disable-next-line no-unused-vars
 	const [items, setItems] = useState([
@@ -16,6 +16,9 @@ function List() {
 			<h3>List:</h3>
 			<p>Display a bullet point list of all the `items` in the state.</p>
 			<ul>
+				{items.map((items, index) => (
+                 <li key={index}>{items}</li>
+                ))}
 
 			</ul>
 		</div>

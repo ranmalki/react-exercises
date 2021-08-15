@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './SmartParagraph.css';
 
 function SmartParagraph() {
-
+	const [isToggled, setIsToggled] = useState(false);
 	const [text] = useState(
 		`I must explain to you how all this mistaken idea of
 		denouncing pleasure and praising pain was born and I will give
@@ -19,9 +19,10 @@ function SmartParagraph() {
 				Clicking again should show all of the text back.
 			</p>
 			<p className="SmartParagraph__value">
-				{text}
+				{isToggled ? text : text.substr(0, text.lastIndexOf(' ', 100)) + '...'}<br />
+				<button onClick={() => setIsToggled(!isToggled)}>
+				{!isToggled ? "Toggle" : "Untoggle"}</button>
 			</p>
-			<button>Toggle</button>
 		</div>
 	);
 }

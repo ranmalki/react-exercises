@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './President.css';
 
 function President() {
-
+	const [name, setName] = useState('');
 	const [presidents] = useState([
 		{
 			firstName: 'Bill',
@@ -21,16 +21,23 @@ function President() {
 		}
 	]);
 
+
+
 	return (
 		<div className="President">
 			<p>When clicking on a president, display his <strong>full</strong> name below.</p>
 			<div className="president-list">
 				{presidents.map((president, index) => {
-					return <img key={index} src={require('./images/' + president.image).default} alt="" />
+					return <img
+					 		key={index}
+							src={require('./images/' + president.image).default}
+							alt=""
+							onClick={() => setName(presidents[index])}		 
+					/>
 				})}
 			</div>
 			<div>
-				<strong>You selected: </strong> Full name here
+				<strong>You selected:</strong> {name && name.firstName + " " + name.lastName}
 			</div>
 		</div>
 	);
